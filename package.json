@@ -1,5 +1,5 @@
 {
-  "name": "frontier-auth-sdk",
+  "name": "@anujyadav070/frontier-sdk",
   "version": "1.0.0",
   "description": "TypeScript SDK for Frontier authentication system",
   "main": "dist/index.js",
@@ -10,9 +10,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/frontier-auth-sdk.git"
+    "url": "git+https://github.com/anujyadav11a/Frontier-SDK"
   },
-  "homepage": "https://github.com/your-username/frontier-auth-sdk#readme",
+  "homepage": "https://github.com/anujyadav11a/Frontier-SDK",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
@@ -25,6 +25,9 @@
   ],
   "author": "ANUJ YADAV",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
     "@types/node": "^25.3.0",
     "typescript": "^5.9.3"
