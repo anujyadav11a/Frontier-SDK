@@ -1,0 +1,32 @@
+{
+  "name": "frontier-auth-sdk",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for Frontier authentication system",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/frontier-auth-sdk.git"
+  },
+  "homepage": "https://github.com/your-username/frontier-auth-sdk#readme",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SDK",
+    "fronteir"
+  ],
+  "author": "ANUJ YADAV",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "typescript": "^5.9.3"
+  }
+}
