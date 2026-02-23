@@ -3,6 +3,7 @@
  */
 
 export interface ClientConfig {
+  api_key?:string
   endpoint?: string;
   project?: string;
   key?: string;
@@ -22,8 +23,9 @@ export class Client {
 
   constructor(config: ClientConfig = {}) {
     this.config = config;
-    this.setEndpoint(config.endpoint || '');
+    this.setEndpoint(config.endpoint || 'http://localhost:8000');
     this.setProject(config.project || '');
+    this.setapikey(config.api_key || '');
     this.setKey(config.key || '');
     this.setJWT(config.jwt || '');
     this.setLocale(config.locale || 'en');
@@ -35,6 +37,15 @@ export class Client {
   setEndpoint(endpoint: string): Client {
     this.config.endpoint = endpoint;
     return this;
+  }
+  /**
+   *set API key
+   
+   */
+
+  setapikey(api_key:string): Client{
+   this.config.api_key=api_key;
+   return this;
   }
 
   /**
