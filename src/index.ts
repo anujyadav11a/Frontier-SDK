@@ -24,6 +24,16 @@ export class FrontierAuth {
   }
 
   /**
+   *set API key
+   
+   */
+
+  setapikey(api_key:string):FrontierAuth {
+   this.client.setapikey(api_key);
+   return this;
+  }
+
+  /**
    * Set the project ID
    */
   setProject(projectId: string): FrontierAuth {
