@@ -6,7 +6,7 @@ export interface ClientConfig {
   api_key?:string
   endpoint?: string;
   project_id?: string;
-  key?: string;
+ 
   jwt?: string;
   locale?: string;
 }
@@ -25,7 +25,7 @@ export class Client {
     this.config = config;
     this.setEndpoint(config.endpoint || 'http://localhost:8000');
     this.setProject(config.project_id || '');
-    this.setKey(config.key || '');
+    this.setKey(config.api_key || '');
     this.setJWT(config.jwt || '');
     this.setLocale(config.locale || 'en');
   }
@@ -51,9 +51,9 @@ export class Client {
   /**
    * Set API key
    */
-  setKey(key: string): Client {
-    this.config.key = key;
-    this.addHeader('X-Frontier-Key', key);
+  setKey(api_key: string): Client {
+    this.config.api_key = api_key;
+    this.addHeader('X-Frontier-Key', api_key);
     return this;
   }
 
