@@ -5,7 +5,7 @@
 export interface ClientConfig {
   api_key?:string
   endpoint?: string;
-  project?: string;
+  project_id?: string;
   key?: string;
   jwt?: string;
   locale?: string;
@@ -24,8 +24,7 @@ export class Client {
   constructor(config: ClientConfig = {}) {
     this.config = config;
     this.setEndpoint(config.endpoint || 'http://localhost:8000');
-    this.setProject(config.project || '');
-    this.setapikey(config.api_key || '');
+    this.setProject(config.project_id || '');
     this.setKey(config.key || '');
     this.setJWT(config.jwt || '');
     this.setLocale(config.locale || 'en');
@@ -38,21 +37,13 @@ export class Client {
     this.config.endpoint = endpoint;
     return this;
   }
-  /**
-   *set API key
-   
-   */
-
-  setapikey(api_key:string): Client{
-   this.config.api_key=api_key;
-   return this;
-  }
+ 
 
   /**
    * Set project ID
    */
   setProject(project: string): Client {
-    this.config.project = project;
+    this.config.project_id = project;
     this.addHeader('X-Frontier-Project', project);
     return this;
   }
