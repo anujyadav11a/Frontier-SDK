@@ -5,13 +5,13 @@ A lightweight TypeScript SDK for authentication with your Frontier backend appli
 ## Installation
 
 ```bash
-npm install frontier-auth-sdk
+npm install @anujyadav070/frontier-sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import FrontierAuth from 'frontier-auth-sdk';
+import FrontierAuth from '@anujyadav070/frontier-sdk';
 
 const auth = new FrontierAuth();
 
