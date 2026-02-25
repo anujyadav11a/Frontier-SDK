@@ -15,12 +15,12 @@ export class Account {
   /**
    * Create account (Sign up)
    */
-  async create(userId: string, email: string, password: string, name?: string): Promise<User> {
+  async create(username: string, email: string, password: string, ): Promise<User> {
     return await this.client.call('POST', '/api/v1/tenantuser/tenantRegister', {}, {
-      userId,
+      username,
       email,
       password,
-      name
+      
     });
   }
 
