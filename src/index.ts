@@ -29,7 +29,7 @@ export class FrontierAuth {
    */
 
   setapikey(api_key:string):FrontierAuth {
-   this.client.setkey(api_key);
+   this.client.setKey(api_key);
    return this;
   }
 
