@@ -44,7 +44,7 @@ export class Client {
    */
   setProject(project: string): Client {
     this.config.project_id = project;
-    this.addHeader('X-Frontier-Project', project);
+    this.addHeader('X-Frontier-Project-ID', project);
     return this;
   }
 
@@ -53,7 +53,7 @@ export class Client {
    */
   setKey(api_key: string): Client {
     this.config.api_key = api_key;
-    this.addHeader('X-Frontier-Key', api_key);
+    this.addHeader('X-Frontier-API-Key', api_key);
     return this;
   }
 
@@ -99,9 +99,8 @@ export class Client {
       throw new Error('API Key is required. Use setKey() to set it.');
     }
 
-    // Build URL with project_id and api_key in path
-    const fullPath = `/projects/${this.config.project_id}/keys/${this.config.api_key}${path}`;
-    const url = new URL(this.config.endpoint + fullPath);
+    // Simple URL construction - project ID and API key are sent as headers
+    const url = new URL(this.config.endpoint + path);
     
     const options: RequestInit = {
       method: method.toUpperCase(),
