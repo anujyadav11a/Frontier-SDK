@@ -16,7 +16,7 @@ export class Account {
    * Create account (Sign up)
    */
   async create(userId: string, email: string, password: string, name?: string): Promise<User> {
-    return await this.client.call('POST', '/account', {}, {
+    return await this.client.call('POST', '/api/v1/tenantuser/tenantRegister', {}, {
       userId,
       email,
       password,
@@ -28,7 +28,7 @@ export class Account {
    * Create email session (Login)
    */
   async createEmailSession(email: string, password: string): Promise<Session> {
-    return await this.client.call('POST', '/account/sessions/email', {}, {
+    return await this.client.call('POST', '/api/v1/tenantuser/tenatlogin', {}, {
       email,
       password
     });
