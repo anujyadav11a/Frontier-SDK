@@ -91,7 +91,18 @@ export class Client {
     headers: Record<string, string> = {},
     params: Record<string, any> = {}
   ): Promise<any> {
-    const url = new URL(this.config.endpoint + path);
+    // Validate required parameters
+    if (!this.config.project_id) {
+      throw new Error('Project ID is required. Use setProject() to set it.');
+    }
+    if (!this.config.api_key) {
+      throw new Error('API Key is required. Use setKey() to set it.');
+    }
+
+    // Build URL with project_id and api_key in path
+    const fullPath = `/projects/${this.config.project_id}/keys/${this.config.api_key}${path}`;
+    const url = new URL(this.config.endpoint + fullPath);
+    
     const options: RequestInit = {
       method: method.toUpperCase(),
       headers: { ...this.headers, ...headers },
