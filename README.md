@@ -17,7 +17,8 @@ const auth = new FrontierAuth();
 
 auth
   .setEndpoint('https://your-backend.com/v1')
-  .setProject('your-project-id');
+  .setProject('your-project-id')
+  .setKey('your api key');
 
 // Sign up new user
 const user = await auth.account.create('unique-id', 'user@example.com', 'password', 'John Doe');
