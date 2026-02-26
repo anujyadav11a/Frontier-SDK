@@ -24,9 +24,9 @@ export class Client {
   constructor(config: ClientConfig = {}) {
     this.config = config;
     this.setEndpoint(config.endpoint || 'http://localhost:8000');
-    this.setProject(config.project_id || '');
-    this.setKey(config.api_key || '');
-    this.setJWT(config.jwt || '');
+    if (config.project_id) this.setProject(config.project_id);
+    if (config.api_key) this.setKey(config.api_key);
+    if (config.jwt) this.setJWT(config.jwt);
     this.setLocale(config.locale || 'en');
   }
 
@@ -44,7 +44,9 @@ export class Client {
    */
   setProject(project: string): Client {
     this.config.project_id = project;
-    this.addHeader('X-Frontier-Project-ID', project);
+    if (project) {
+      this.addHeader('X-Frontier-Project-ID', project);
+    }
     return this;
   }
 
@@ -53,7 +55,9 @@ export class Client {
    */
   setKey(api_key: string): Client {
     this.config.api_key = api_key;
-    this.addHeader('X-Frontier-API-Key', api_key);
+    if (api_key) {
+      this.addHeader('X-Frontier-API-Key', api_key);
+    }
     return this;
   }
 
@@ -83,6 +87,13 @@ export class Client {
   }
 
   /**
+   * Get current headers (for debugging)
+   */
+  getHeaders(): Record<string, string> {
+    return { ...this.headers };
+  }
+
+  /**
    * Make HTTP request
    */
   async call(
@@ -106,6 +117,10 @@ export class Client {
       method: method.toUpperCase(),
       headers: { ...this.headers, ...headers },
     };
+
+    // Debug: Log headers being sent
+    console.log('🔍 Debug - Headers being sent:', options.headers);
+    console.log('🔍 Debug - URL:', url.toString());
 
     if (method.toUpperCase() === 'GET') {
       Object.keys(params).forEach(key => {
