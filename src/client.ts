@@ -3,10 +3,9 @@
  */
 
 export interface ClientConfig {
-  api_key?:string
+  api_key?: string;
   endpoint?: string;
   project_id?: string;
- 
   jwt?: string;
   locale?: string;
 }
@@ -37,15 +36,14 @@ export class Client {
     this.config.endpoint = endpoint;
     return this;
   }
- 
 
   /**
    * Set project ID
    */
-  setProject(project: string): Client {
-    this.config.project_id = project;
-    if (project) {
-      this.addHeader('X-Frontier-Project-ID', project);
+  setProject(project_id: string): Client {
+    this.config.project_id = project_id;
+    if (project_id) {
+      this.addHeader('project_id', project_id);
     }
     return this;
   }
@@ -56,7 +54,7 @@ export class Client {
   setKey(api_key: string): Client {
     this.config.api_key = api_key;
     if (api_key) {
-      this.addHeader('X-Frontier-API-Key', api_key);
+      this.addHeader('api_key', api_key);
     }
     return this;
   }
@@ -66,7 +64,9 @@ export class Client {
    */
   setJWT(jwt: string): Client {
     this.config.jwt = jwt;
-    this.addHeader('X-Frontier-JWT', jwt);
+    if (jwt) {
+      this.addHeader('JWT', jwt);
+    }
     return this;
   }
 
@@ -74,7 +74,7 @@ export class Client {
    * Set locale
    */
   setLocale(locale: string): Client {
-    this.headers['X-Frontier-Locale'] = locale;
+    this.headers['Locale'] = locale;
     return this;
   }
 
